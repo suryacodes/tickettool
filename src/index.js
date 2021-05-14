@@ -5,10 +5,8 @@ const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
-const config = require("./config.json");
 const error = require("./middleware/error");
 const fileUpload = require("express-fileupload");
-const db = require("./db");
 
 let app = express();
 
@@ -28,12 +26,14 @@ app.use(
   })
 );
 
+require("./db");
+
 // Routes
 require("./api")(app);
 
 app.use(error);
 
-app.server.listen(process.env.PORT || 4000, () => {
+app.server.listen(process.env.PORT || 5000, () => {
   console.log(`Started on port ${app.server.address().port}`);
 });
 
