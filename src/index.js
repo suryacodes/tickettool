@@ -33,7 +33,7 @@ require("./api")(app);
 
 app.use(error);
 
-app.server.listen(process.env.PORT || 5000, () => {
+app.server.listen(process.env.PORT || 4000, () => {
   console.log(`Started on port ${app.server.address().port}`);
 });
 
